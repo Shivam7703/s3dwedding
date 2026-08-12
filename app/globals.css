@@ -8,8 +8,6 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +20,62 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Yahan Next.js wale variables direct use honge */
+ h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-qwitcher), cursive !important;
+  font-style: normal;
+}
+
+p , .font1 {
+  font-family: var(--font-cormorant), serif;
+}
+
+/* p {
+  font-family: var(--font-niconne), cursive;
+} */
+
+/* .cursive, h4 {
+  font-family: var(--font-great-vibes), cursive;
+} */
+
+/* Background Utility Classes */
+.bg-about {
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.74), #710000da), url("../assets/bg6.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bg-gal {
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.74), #710000da), url("../assets/bg11.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bg-ser {
+  background: linear-gradient(rgba(41, 41, 41, 0.90), rgba(0, 0, 0, 0.894)), url("../assets/bg2.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.bg-abs1 {
+  background: url("../assets/bg101.jpg");
+}
+.bg-abs2 {
+  background: url("../assets/bg102.jpg");
+}
+
+::-webkit-scrollbar {
+  width: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000;
+  border-radius: 40px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fc2600;
 }
