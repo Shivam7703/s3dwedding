@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { couple, bg10} from "@/assets";
 import * as THREE from "three";
+import Buttonmain from "./button";
 
 // ---------- scroll progress (rAF + lerp smoothing) ----------
 function useScrollProgress(ref: React.RefObject<HTMLDivElement | null>) {
@@ -516,7 +517,7 @@ export default function Aboutsection() {
         
         {/* Phase 3 Canvas - ALWAYS OPACITY 1 */}
         <div 
-          className="absolute bottom-0 left-0 w-full pointer-events-none"
+          className="absolute -bottom-8 left-0 w-full pointer-events-none"
           style={{ height: "80vh", zIndex: 5, opacity: 1 }}
         >
           <FullScreenParticleCanvas progress={rawProgress} />
@@ -526,13 +527,36 @@ export default function Aboutsection() {
         <div ref={stickyRef} className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
           <div className="mx-auto w-full px-6 max-w-362.5 md:px-10 lg:px-24 flex flex-wrap justify-between gap-y-6 items-center">
             <div className="md:w-[50%] w-full">
-              <h2 className=" font-semibold text-4xl capitalize md:text-8xl leading-[1.05] mb-6">
-                Every love story, shaped <span className="text-red-600 cursive">with intention.</span>
-              </h2>
-              <p className="text-white text-lg mb-8 leading-relaxed">
-                We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the essence of your love. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga enim error blanditiis non corporis recusandae deleniti eum ad accusamus autem!
-              </p>
-            </div>
+              <h4 className="font1 font-black mb-3 text-2xl sm:text-4xl">About Us</h4>
+  <h2 className="font-bold text-3xl capitalize md:text-[65px] leading-[1.05] mb-5">
+    Every love story, shaped <span className="text-red-600">with intention.</span>
+  </h2>
+  
+  <p className="text-zinc-300 mb-5 leading-relaxed">
+    We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the true essence of your love.  We believe every couple has a unique story waiting to be told. true essence of your love.
+  </p>
+    <p className="text-zinc-300 mb-8 leading-relaxed">
+    We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the true essence of your love. 
+  </p>
+
+  {/* Feature Boxes */}
+  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+    <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
+      <h3 className="font-semibold text-lg text-amber-400 mb-2 border-b">Artistic Vision</h3>
+      <p className="text-xs text-zinc-300">Cinematic storytelling tailored to your vibe.</p>
+    </div>
+
+   <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
+      <h3 className="font-semibold text-lg text-amber-400 mb-2 border-b">Artistic Vision</h3>
+      <p className="text-xs mb-2  text-zinc-300">Cinematic storytelling tailored to your vibe.</p>
+    </div>
+    <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
+      <h3 className="font-semibold text-lg text-amber-400 mb-2 border-b">Artistic Vision</h3>
+      <p className="text-xs text-zinc-300 mb-2">Cinematic storytelling tailored to your vibe.</p>
+    </div>
+  </div>
+    
+</div>
 
             <div className="relative h-100 md:w-[45%] w-full md:h-137.5">
               <Image src={bg10} alt="About" className="w-full absolute top-0 right-0 h-full object-cover rounded-xl" />
@@ -573,7 +597,6 @@ export default function Aboutsection() {
     transition: 'opacity 0.4s linear' 
   }}
 >
-  {/* <p className="text-zinc-800 pb-20 border-b-2 w-full text-center text-5xl font-bold">Keep Scrolling</p> */}
 </div>
     </div>
   );

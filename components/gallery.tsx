@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { aboutbg, gal1,bg11,
+import { aboutbg, gal1, bg11,
   gal2,
   gal3,
   gal4,
@@ -58,15 +58,17 @@ function PillarParticleCanvas({ isMobile }: PillarProps) {
     const mount = mountRef.current;
     if (!mount) return;
 
-    const w = window.innerWidth;
-    const h = window.innerHeight;
+    // Use container dimensions so canvas center matches exact DOM center
+    const w = mount.clientWidth || window.innerWidth;
+    const h = mount.clientHeight || window.innerHeight;
     
     const aspect = w / h;
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000);
-    camera.position.set(0, 0, isMobile ? 42 : 35); 
+    camera.position.set(0, 0, isMobile ? 39: 35); 
+    camera.lookAt(0, 0, 0); // Explicitly center target
 
-    const particleCount = isMobile ? 2200 : 3000; 
+    const particleCount = isMobile ? 3200 : 3000; 
     const maxRadius = isMobile ? 3.2 : 6.0; 
     const pillarHeight = 50; 
 
@@ -179,7 +181,7 @@ function PillarParticleCanvas({ isMobile }: PillarProps) {
     const material = new THREE.ShaderMaterial({
       uniforms: { 
         uTime: { value: 0 },
-        uSizeMultiplier: { value: isMobile ? 900.0 : 1650.0 }
+        uSizeMultiplier: { value: isMobile ? 1200.0 : 1750.0 }
       },
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
@@ -226,9 +228,12 @@ function PillarParticleCanvas({ isMobile }: PillarProps) {
     animate();
 
     const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
+      if (!mount) return;
+      const rw = mount.clientWidth || window.innerWidth;
+      const rh = mount.clientHeight || window.innerHeight;
+      camera.aspect = rw / rh;
       camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setSize(rw, rh);
     };
     window.addEventListener("resize", handleResize);
 
@@ -243,7 +248,7 @@ function PillarParticleCanvas({ isMobile }: PillarProps) {
     };
   }, [isMobile]);
 
-  return <div ref={mountRef} className="absolute inset-0 pointer-events-none z-0" />;
+  return <div ref={mountRef} className="absolute inset-0 w-full h-full flex items-center justify-center pointer-events-none z-0" />;
 }
 
 // ---------- Gallery Component ----------
@@ -261,21 +266,7 @@ export default function Gallery() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const images = useMemo(() => [ gal1,
-  gal2,
-  gal3,
-  gal4,
-  gal5,
-  gal6,
-  gal7,
-  gal8,
-  gal9,
-  gal10,
-  gal11,
-  gal12,
-  gal3,
-  gal2,gal1,
-  bg11,], []);
+  const images = useMemo(() => [ gal1, gal2, gal3, gal4, gal5, gal6, gal7, gal8, gal9, gal10, gal11, gal12, gal3, gal2, gal1, bg11 ], []);
 
   const imageDetails = [
     { title: "Ethereal Beginnings", desc: "Embarking on a fluid journey of abstract colors and natural canvas gradients." },
@@ -300,7 +291,7 @@ export default function Gallery() {
   );
 
   const currentDetail = imageDetails[activeIndex] || { title: "Our Showcase", desc: "Explore our dynamic gallery layers." };
-  const whiteOverlayOpacity = Math.max(0, 1 - (progress * 5));
+  const whiteOverlayOpacity = Math.max(0, 1 - (progress * 12));
   const textOpacity = Math.max(0, 1 - (zoomProgress * 2.5));
 
   if (!isMounted) {
@@ -309,29 +300,25 @@ export default function Gallery() {
 
   return (
     <>
-      {/* 1. Gallery Section (500vh for 3D spin + zoom animation) */}
-      <div ref={containerRef} className="relative h-[900vh] w-full text-zinc-800 bg-black">
+      <div ref={containerRef} className="relative h-[900vh] w-full text-zinc-800 ">
+         <div 
+              className="absolute inset-0 z-100 bg-abs2 bg-top! bg-cover bg-no-repeat pointer-events-none"
+              style={{ opacity: whiteOverlayOpacity }}
+            />
         <div className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center">
           
           {/* Gallery Layer */}
           <div 
-            className="absolute inset-0 z-10 flex items-center justify-center bg-gal transition-opacity"
+            className="absolute inset-0 flex items-center justify-center bg-gal transition-opacity"
             style={{ opacity: galleryOpacity }}
           >
-            {/* White Overlay */}
-            <div 
-              className="absolute inset-0 z-70 bg-abs2 bg-top!  bg-cover bg-no-repeat pointer-events-none"
-              style={{ opacity: whiteOverlayOpacity }}
-            />
-
-            <PillarParticleCanvas isMobile={isMobile} />
 
             {/* Header Text */}
             <div 
-              className="absolute right-6 top-12 md:right-12 md:top-12 z-30 max-w-65 md:max-w-xs text-right pointer-events-none"
+              className="absolute right-6 top-20 max-md:p-3 max-md:bg-black/40 z-30 max-w-65 max-md:backdrop-blur-md md:max-w-sm text-right pointer-events-none"
               style={{ opacity: textOpacity }}
             >
-              <h2 className="text-2xl md:text-4xl font-extrabold uppercase tracking-wider text-white mb-2 drop-shadow-sm">
+              <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wider text-white mb-2 drop-shadow-sm">
                 Our Gallery
               </h2>
               <p className="text-sm md:text-base text-zinc-200 font-medium leading-relaxed">
@@ -341,46 +328,58 @@ export default function Gallery() {
 
             {/* Active Image Text */}
             <div 
-              className="absolute left-6 bottom-6 md:left-12 md:bottom-12 z-30 max-w-70 md:max-w-sm text-left pointer-events-none transition-all duration-300"
+              className="absolute left-6 bottom-6 rounded-lg border border-white/10  bg-black/10 p-5 backdrop-blur-lg z-30 max-w-70 md:max-w-sm text-left pointer-events-none transition-all duration-300"
               style={{ opacity: textOpacity }}
             >
-              <h3 className="text-2xl md:text-4xl font-bold text-white mb-1 tracking-wide">
+              <h3 className="text-2xl md:text-3xl font-extrabold text-amber-500  mb-2 tracking-wide">
                 {currentDetail.title}
               </h3>
-              <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-medium">
-                {currentDetail.desc}
+              <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-normal">
+                {currentDetail.desc} {currentDetail.desc} {currentDetail.desc}
               </p>
             </div>
 
-            {/* 3D Cards Container */}
+            {/* 3D Cards & Pillar Container */}
             <div 
-              className="relative w-full h-full flex items-center justify-center z-20 max-w-[1400px] mx-auto"
+              className="relative w-full h-full flex items-center justify-center mx-auto"
               style={{ perspective: isMobile ? '1200px' : '1600px', transformStyle: 'preserve-3d' }}
             >
+              {/* Pillar Canvas positioned at exact screen viewport center */}
+              <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center" style={{ transform: 'translateZ(0px)' }}>
+                <PillarParticleCanvas isMobile={isMobile} />
+              </div>
+
               {images.map((img, index) => {
                 const targetProgress = index / (images.length - 1);
-                const ySpread = isMobile ? 700 : 1200; 
-                
+                const ySpread = isMobile ? 1300 : 2200;
+
                 const currentY = (targetProgress - rotationProgress) * ySpread;
                 const currentAngle = (targetProgress - rotationProgress) * Math.PI * 5.1; 
-                const radius = isMobile ? 220 : 410; 
+                const radius = isMobile ? 280 : 410; 
 
                 const translateX = Math.sin(currentAngle) * radius;
                 const translateZ = Math.cos(currentAngle) * radius;
-                
+
                 const isLastImage = index === images.length - 1;
+
                 const scale = isLastImage ? 1 + (zoomProgress * 15) : 1;
                 const zIndex = isLastImage && zoomProgress > 0 ? 1000 : Math.round(translateZ);
+
+                const cardOpacity = translateZ >= 0 
+                  ? 1 
+                  : 0.25 + 0.75 * ((translateZ + radius) / radius);
 
                 return (
                   <div
                     key={index}
                     suppressHydrationWarning
-                    className="absolute w-56 h-72 md:w-120 md:h-80 rounded-xl overflow-hidden border border-black/5 shadow-2xl"
+                    className="absolute w-72 h-60 md:w-120 md:h-80 rounded-xl overflow-hidden border border-black/5 shadow-2xl pointer-events-none"
                     style={{
                       transform: `translate3d(${translateX}px, ${currentY}px, ${translateZ}px) rotateY(${currentAngle * (180 / Math.PI)}deg) scale(${scale})`,
                       transformStyle: 'preserve-3d',
-                      backfaceVisibility: 'hidden',
+                      backfaceVisibility: 'visible',
+                      opacity: cardOpacity,
+                      transition: 'opacity 0.1s linear',
                       zIndex: zIndex,
                     }}
                   >
@@ -394,6 +393,7 @@ export default function Gallery() {
                 );
               })}
             </div>
+
           </div>
         </div>
       </div>

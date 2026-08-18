@@ -10,14 +10,13 @@ export default function Home() {
   return (
     <main className="bg-zinc-950">
         <ScrollCanvas />
-
         <Aboutsection />
-{/* <Gallery /> */}
-        {/* 
+        <Gallery />
+        
 
         <Services />
 
-      <StickySection zIndex={10}>
+      {/* <StickySection zIndex={10}>
         <Whychoose />
       </StickySection> */}
     </main>

@@ -186,10 +186,10 @@ export default function ScrollCanvas() {
           style={{ opacity: c1Opacity, filter: c1Blur, y: c1Y }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[120px] text-6xl font-black leading-[0.9]! text-white mb-6">
-            Exquisite Planning Forever <span className="text-red-500">Begins</span>
+          <h1 className="lg:text-[80px] md:tex-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+            Exquisite Planning Forever <span className="text-red-600">Begins</span>
           </h1>
-          <p className="text-gray-50 mb-8 text-lg max-w-xl font-semibold line-clamp-2">
+          <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
             Crafting bespoke wedding experiences with elegance, precision, and timeless design. Your love story, our canvas.
           </p>
           <div className="flex gap-4">
@@ -205,10 +205,10 @@ export default function ScrollCanvas() {
           style={{ opacity: c2Opacity, filter: c2Blur, y: c2Y }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[120px] text-6xl font-black leading-[0.9]! text-white mb-6">
-            Every Detail, With <span className="text-red-500">Perfection</span>
+          <h1 className="lg:text-[80px] md:tex-5xl sm:text-4xl text-3xl font-bold leadin[1.2]] text-white mb-6">
+            Every Detail, With <span className="text-red-600">Perfection</span>
           </h1>
-          <p className="text-gray-50 mb-8 text-lg max-w-xl font-semibold line-clamp-2">
+          <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
             From venue selection to the final toast, we handle every moment with care and creativity. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
           </p>
           <div className="flex gap-4">
@@ -224,10 +224,10 @@ export default function ScrollCanvas() {
           style={{ opacity: c3Opacity, filter: c3Blur, y: c3Y }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[120px] text-6xl font-black leading-[0.9]! text-white mb-6">
-            We Create Your <span className="text-red-500">Happy Journey</span>
+          <h1 className="lg:text-[80px] md:tex-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+            We Create Your <span className="text-red-600">Happy Journey</span>
           </h1>
-          <p className="text-gray-50 mb-8 text-lg max-w-xl font-semibold line-clamp-2">
+          <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
             Let's create memories that last a lifetime. Reach out and start planning today Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quis.
           </p>
           <div className="flex gap-4">
@@ -241,7 +241,7 @@ export default function ScrollCanvas() {
         {/* Bottom-right floating info box */}
         <div className="absolute bottom-2 right-1 z-20 w-44 h-20 bg-black rounded-lg border border-white/20 flex flex-col items-center justify-center gap-1 px-3">
           <p className="text-white text-xs font-medium text-center">
-            Managed by <span className="text-red-500 font-semibold">YourBrand</span>
+            Managed by <span className="text-red-600 font-bold">YourBrand</span>
           </p>
           <button
             onClick={() => {/* open your popup/form logic here */}}

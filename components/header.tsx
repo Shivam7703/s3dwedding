@@ -14,7 +14,7 @@ export default function Header() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // 1. Appearance logic (background change at 1250px)
-    setIsScrolled(latest > 1850);
+    // setIsScrolled(latest > 1850);
 
     // 2. Hide/Show logic (top -24px vs 0)
   //   const diff = latest - lastScrollY.get();

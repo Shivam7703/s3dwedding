@@ -18,9 +18,9 @@ import ser5 from "@/assets/ser5.jpg"
 import bride from "@/assets/bride.jpg"
 
 // gallery
-import gal1 from "@/assets/gal1.webp";
+import gal1 from "@/assets/gal1.jpg";
 import gal2 from "@/assets/gal2.webp";
-import gal3 from "@/assets/gal3.webp";
+import gal3 from "@/assets/gal3.jpg";
 import gal4 from "@/assets/gal4.webp";
 import gal5 from "@/assets/gal5.webp";
 import gal6 from "@/assets/gal6.webp";

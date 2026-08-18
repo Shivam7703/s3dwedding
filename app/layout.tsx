@@ -1,6 +1,6 @@
 import { 
   Cormorant, 
-  Qwitcher_Grypen 
+  Qwitcher_Grypen ,Lora
 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -12,7 +12,11 @@ const cormorant = Cormorant({
   weight: ["300", "400", "500", "600", "700"]
 });
 
-
+const lora = Lora({ 
+  subsets: ["latin"], 
+  variable: "--font-lora",
+  weight: [ "400", "500", "600", "700"]
+});
 
 const qwitcher = Qwitcher_Grypen({ 
   subsets: ["latin"], 
@@ -30,7 +34,9 @@ export default function RootLayout({
       {/* Sabhi font variables ko body par apply kar diya hai */}
       <body className={`
         ${cormorant.variable} 
-        ${qwitcher.variable} 
+        ${qwitcher.variable}
+        ${lora.variable} 
+
         antialiased
       `}>
         <Header/>

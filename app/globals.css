@@ -24,17 +24,17 @@ body {
 
 /* Yahan Next.js wale variables direct use honge */
  h1,h2,h3,h4,h5,h6 {
-  font-family: var(--font-qwitcher), cursive !important;
+    font-family: var(--font-cormorant), serif;
   font-style: normal;
 }
 
-p , .font1 {
-  font-family: var(--font-cormorant), serif;
+.font1 {
+    font-family: var(--font-qwitcher), cursive !important;
 }
 
-/* p {
-  font-family: var(--font-niconne), cursive;
-} */
+p {
+  font-family: var(--font-lora), serif;
+}
 
 /* .cursive, h4 {
   font-family: var(--font-great-vibes), cursive;
@@ -42,15 +42,21 @@ p , .font1 {
 
 /* Background Utility Classes */
 .bg-about {
-  background: linear-gradient(45deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.74), #710000da), url("../assets/bg6.jpg");
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.74), #3b0303da), url("../assets/bg6.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
 
 .bg-gal {
-  background: linear-gradient(45deg, rgb(0, 0, 0), rgba(0, 0, 0, 0.74), #710000da), url("../assets/bg11.jpg");
-  background-attachment: fixed;
-  background-size: cover;
+background: radial-gradient(
+  circle at 50% 0%,
+  #a15600 0%,
+  #981a01 8%,
+  #5c0b0b 18%,
+  #1d0303 35%,
+  #080101 55%,
+  #000000 100%
+);
 }
 
 .bg-ser {
