@@ -26,40 +26,36 @@ export default function ScrollCanvas() {
 
   // ---------- CONTENT 1 ----------
   // 0 -> blurred+hidden, fades in clear, stays, blurs out again
-  const c1Opacity = useTransform(
-    scrollYProgress,
-    [ 0.27, 0.33],
-    [ 1, 0]
-  );
-  const c1BlurVal = useTransform(
-    scrollYProgress,
-    [0.27, 0.33],
-    [ 0, 20]
-  );
+  // NOTE: extra "1" stop at the end forces opacity/blur/y to stay locked
+  // at their final value for the rest of the scroll, instead of relying
+  // on implicit clamping (which was letting content1 creep back up while
+  // content2/content3 were on screen).
+  const c1Opacity = useTransform(scrollYProgress, [0.27, 0.33, 1], [1, 0, 0]);
+  const c1BlurVal = useTransform(scrollYProgress, [0.27, 0.33, 1], [0, 20, 20]);
   const c1Blur = useMotionTemplate`blur(${c1BlurVal}px)`;
-  const c1Y = useTransform(
-    scrollYProgress,
-    [ 0.27, 0.33],
-    [ 0, -140]
-  );
+  const c1Y = useTransform(scrollYProgress, [0.27, 0.33, 1], [0, -40, -40]);
+  // FIX: when opacity hits 0, remove this layer from hit-testing so it
+  // doesn't sit on top of / block whatever is rendered underneath.
+  const c1Pointer = useTransform(c1Opacity, (v) => (v > 0.05 ? "auto" : "none"));
 
   // ---------- CONTENT 2 ----------
   const c2Opacity = useTransform(
     scrollYProgress,
-    [0.33, 0.39, 0.6, 0.66],
-    [0, 1, 1, 0]
+    [0.33, 0.39, 0.6, 0.66, 1],
+    [0, 1, 1, 0, 0]
   );
   const c2BlurVal = useTransform(
     scrollYProgress,
-    [0.33, 0.39, 0.6, 0.66],
-    [20, 0, 0, 20]
+    [0.33, 0.39, 0.6, 0.66, 1],
+    [20, 0, 0, 20, 20]
   );
   const c2Blur = useMotionTemplate`blur(${c2BlurVal}px)`;
   const c2Y = useTransform(
     scrollYProgress,
-    [0.33, 0.39, 0.6, 0.66],
-    [40, 0, 0, -40]
+    [0.33, 0.39, 0.6, 0.66, 1],
+    [40, 0, 0, -40, -40]
   );
+  const c2Pointer = useTransform(c2Opacity, (v) => (v > 0.05 ? "auto" : "none"));
 
   // ---------- CONTENT 3 ----------
   const c3Opacity = useTransform(
@@ -78,6 +74,7 @@ export default function ScrollCanvas() {
     [0.66, 0.72, 0.94, 1.0],
     [40, 0, 0, -40]
   );
+  const c3Pointer = useTransform(c3Opacity, (v) => (v > 0.05 ? "auto" : "none"));
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -183,10 +180,10 @@ export default function ScrollCanvas() {
 
         {/* Content 1 */}
         <motion.div
-          style={{ opacity: c1Opacity, filter: c1Blur, y: c1Y }}
+          style={{ opacity: c1Opacity, filter: c1Blur, y: c1Y, pointerEvents: c1Pointer }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:tex-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
             Exquisite Planning Forever <span className="text-red-600">Begins</span>
           </h1>
           <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
@@ -194,7 +191,7 @@ export default function ScrollCanvas() {
           </p>
           <div className="flex gap-4">
             <Buttonmain text="View Portfolio" href="tel:+918218885483" variant="primary" />
-            <button className="border text-sm font-medium backdrop-blur-sm border-white/60 text-white px-7 py-3 rounded-lg hover:bg-white/10 transition">
+            <button className="border text-sm font-medium backdrop-blur-sm border-white/60 text-white px-7 py-3 rounded-lg hover:bg-white/10 transition cursor-pointer">
               Book Now
             </button>
           </div>
@@ -202,18 +199,18 @@ export default function ScrollCanvas() {
 
         {/* Content 2 */}
         <motion.div
-          style={{ opacity: c2Opacity, filter: c2Blur, y: c2Y }}
+          style={{ opacity: c2Opacity, filter: c2Blur, y: c2Y, pointerEvents: c2Pointer }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:tex-5xl sm:text-4xl text-3xl font-bold leadin[1.2]] text-white mb-6">
+          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-[1.2] text-white mb-6">
             Every Detail, With <span className="text-red-600">Perfection</span>
           </h1>
           <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
-            From venue selection to the final toast, we handle every moment with care and creativity. Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            From venue selection to the final toast, we handle every moment with care and creativity. Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           <div className="flex gap-4">
             <Buttonmain text="Our Process" href="tel:+918218885483" variant="primary" />
-            <button className="border text-sm font-medium backdrop-blur-sm border-white/60 text-white px-7 py-3 rounded-lg hover:bg-white/10 transition">
+            <button className="border text-sm font-medium backdrop-blur-sm border-white/60 text-white px-7 py-3 rounded-lg hover:bg-white/10 transition cursor-pointer">
               Learn More
             </button>
           </div>
@@ -221,18 +218,18 @@ export default function ScrollCanvas() {
 
         {/* Content 3 */}
         <motion.div
-          style={{ opacity: c3Opacity, filter: c3Blur, y: c3Y }}
+          style={{ opacity: c3Opacity, filter: c3Blur, y: c3Y, pointerEvents: c3Pointer }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:tex-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
             We Create Your <span className="text-red-600">Happy Journey</span>
           </h1>
           <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
-            Let's create memories that last a lifetime. Reach out and start planning today Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quis.
+            Let's create memories that last a lifetime. Reach out and start planning today. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quis.
           </p>
           <div className="flex gap-4">
             <Buttonmain text="Get Started" href="tel:+918218885483" variant="primary" />
-            <button className="border text-sm font-medium backdrop-blur-sm border-white/60 text-white px-7 py-3 rounded-lg hover:bg-white/10 transition">
+            <button className="border text-sm font-medium backdrop-blur-sm border-white/60 text-white px-7 py-3 rounded-lg hover:bg-white/10 transition cursor-pointer">
               Contact Us
             </button>
           </div>
@@ -244,8 +241,10 @@ export default function ScrollCanvas() {
             Managed by <span className="text-red-600 font-bold">YourBrand</span>
           </p>
           <button
-            onClick={() => {/* open your popup/form logic here */}}
-            className="text-[11px] text-white border border-white/50 rounded-md px-3 py-1 hover:bg-white/10 transition"
+            onClick={() => {
+              /* open your popup/form logic here */
+            }}
+            className="text-[11px] text-white border border-white/50 rounded-md px-3 py-1 hover:bg-white/10 transition cursor-pointer"
           >
             Contact Us
           </button>

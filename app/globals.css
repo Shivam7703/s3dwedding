@@ -50,7 +50,7 @@ p {
 .bg-gal {
 background: radial-gradient(
   circle at 50% 0%,
-  #a15600 0%,
+  #a15600 10%,
   #981a01 8%,
   #5c0b0b 18%,
   #1d0303 35%,
@@ -60,14 +60,14 @@ background: radial-gradient(
 }
 
 .bg-ser {
-  background: linear-gradient(rgba(41, 41, 41, 0.90), rgba(0, 0, 0, 0.894)), url("../assets/bg2.jpg");
+  background: linear-gradient(rgba(41, 41, 41, 0.90), rgba(0, 0, 0, 0.894)), url("../assets/bg8.jpg");
   background-attachment: fixed;
   background-size: cover;
 }
 
 
 .bg-abs1 {
-  background: url("../assets/bg101.jpg");
+  background: url("../assets/bg102.jpg");
 }
 .bg-abs2 {
   background: url("../assets/bg102.jpg");
