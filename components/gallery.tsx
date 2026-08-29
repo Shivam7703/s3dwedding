@@ -11,7 +11,7 @@ import { aboutbg, gal1, bg11,
   gal9,
   gal10,
   gal11,
-  gal12, } from "@/assets";
+  gal12,bg7 } from "@/assets";
 import Image from 'next/image';
 import * as THREE from 'three';
 
@@ -266,7 +266,7 @@ export default function Gallery() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const images = useMemo(() => [ gal1, gal2, gal3, gal4, gal5, gal6, gal7, gal8, gal9, gal10, gal11, gal12, gal3, gal2, gal1, bg11 ], []);
+  const images = useMemo(() => [gal2, gal3, gal4, gal5, gal6, gal7, gal8, gal9, gal10, gal11, gal12, gal3, gal2, gal1,bg11, bg7], []);
 
   const imageDetails = [
     { title: "Ethereal Beginnings", desc: "Embarking on a fluid journey of abstract colors and natural canvas gradients." },
@@ -295,12 +295,12 @@ export default function Gallery() {
   const textOpacity = Math.max(0, 1 - (zoomProgress * 2.5));
 
   if (!isMounted) {
-    return <div ref={containerRef} className="relative h-[500vh] w-full bg-black" />;
+    return <div ref={containerRef} className="relative h-[500vh] w-full" />;
   }
 
   return (
     <>
-      <div ref={containerRef} className="relative h-[900vh] w-full text-zinc-800 ">
+      <div ref={containerRef} className="relative h-[900vh] w-full bg-black text-zinc-800 ">
          <div 
               className="absolute inset-0 z-100 bg-abs2 bg-top! bg-cover bg-no-repeat pointer-events-none"
               style={{ opacity: whiteOverlayOpacity }}
@@ -328,7 +328,7 @@ export default function Gallery() {
 
             {/* Active Image Text */}
             <div 
-              className="absolute left-6 bottom-6 rounded-lg border border-white/10  bg-black/10 p-5 backdrop-blur-lg z-30 max-w-70 md:max-w-sm text-left pointer-events-none transition-all duration-300"
+              className="absolute left-6 bottom-6 rounded-lg border border-white/10  bg-black/20 p-5 max-lg:backdrop-blur-lg z-30 max-w-70 md:max-w-sm text-left pointer-events-none transition-all duration-300"
               style={{ opacity: textOpacity }}
             >
               <h3 className="text-2xl md:text-3xl font-extrabold text-amber-500  mb-2 tracking-wide">

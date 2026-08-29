@@ -186,8 +186,8 @@ export default function ScrollCanvas() {
           <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
             Exquisite Planning Forever <span className="text-red-600">Begins</span>
           </h1>
-          <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
-            Crafting bespoke wedding experiences with elegance, precision, and timeless design. Your love story, our canvas.
+          <p className="text-zinc-400 mb-8 leading-[1.7] max-w-xl font-medium line-clamp-3">
+            Crafting bespoke wedding experiences with elegance, precision, and timeless design. Your love story, our canvas. Crafting bespoke wedding experiences with elegance, precision, and timeless design.
           </p>
           <div className="flex gap-4">
             <Buttonmain text="View Portfolio" href="tel:+918218885483" variant="primary" />
@@ -202,11 +202,11 @@ export default function ScrollCanvas() {
           style={{ opacity: c2Opacity, filter: c2Blur, y: c2Y, pointerEvents: c2Pointer }}
           className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-[1.2] text-white mb-6">
-            Every Detail, With <span className="text-red-600">Perfection</span>
+          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+            Every Detail, With Proper <span className="text-red-600">Perfection</span>
           </h1>
-          <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
-            From venue selection to the final toast, we handle every moment with care and creativity. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <p className="text-zinc-400 mb-8 leading-[1.7] max-w-xl font-medium line-clamp-3">
+            From venue selection to the final toast, we handle every moment with care and creativity. Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           <div className="flex gap-4">
             <Buttonmain text="Our Process" href="tel:+918218885483" variant="primary" />
@@ -224,8 +224,8 @@ export default function ScrollCanvas() {
           <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
             We Create Your <span className="text-red-600">Happy Journey</span>
           </h1>
-          <p className="text-gray-50 mb-8 text-lg max-w-xl font-medium line-clamp-2">
-            Let's create memories that last a lifetime. Reach out and start planning today. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quis.
+          <p className="text-zinc-400 mb-8 leading-[1.7] max-w-xl font-medium line-clamp-3">
+            Let's create memories that last a lifetime. Reach out and start planning today. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quis.  Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           <div className="flex gap-4">
             <Buttonmain text="Get Started" href="tel:+918218885483" variant="primary" />
@@ -238,7 +238,7 @@ export default function ScrollCanvas() {
         {/* Bottom-right floating info box */}
         <div className="absolute bottom-2 right-1 z-20 w-44 h-20 bg-black rounded-lg border border-white/20 flex flex-col items-center justify-center gap-1 px-3">
           <p className="text-white text-xs font-medium text-center">
-            Managed by <span className="text-red-600 font-bold">YourBrand</span>
+            Managed by <span className="text-red-600 font-bold">S3d Wedding</span>
           </p>
           <button
             onClick={() => {

@@ -12,13 +12,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: black;
   color: var(--foreground);
 }
 
@@ -59,11 +59,17 @@ background: radial-gradient(
 );
 }
 
-.bg-ser {
-  background: linear-gradient(rgba(41, 41, 41, 0.90), rgba(0, 0, 0, 0.894)), url("../assets/bg8.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-}
+#bg-service { background: radial-gradient(
+    circle at 0% 100%,
+    #350707 8%,
+    #1c0000 35%,
+    #080101 55%,
+    #000000 80%
+    #000000 100%
+  )!important}
+
+
+
 
 
 .bg-abs1 {

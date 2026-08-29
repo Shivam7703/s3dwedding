@@ -50,8 +50,7 @@ function Button({ text11 }: { text11: string }) {
         text-sm font-medium tracking-wide transition-all duration-300 group
         relative overflow-hidden shadow-sm 
         
-        /* Light Mode Styles */
-        to-rose-500 from-red-600 bg-linear-to-r text-zinc-100 hover:to-pink-500 shadow-zinc-700/30
+        to-rose-700 from-red-600 bg-linear-to-r text-zinc-100 hover:to-red-800 shadow-zinc-700/30
       "
     >
       <span className="relative z-10">{text11}</span>

@@ -1,6 +1,6 @@
 import { 
   Cormorant, 
-  Qwitcher_Grypen ,Lora
+  Qwitcher_Grypen ,Lora, Montserrat
 } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
@@ -12,14 +12,14 @@ const cormorant = Cormorant({
   weight: ["300", "400", "500", "600", "700"]
 });
 
-const lora = Lora({ 
+const lora = Montserrat({ 
   subsets: ["latin"], 
   variable: "--font-lora",
-  weight: [ "400", "500", "600", "700"]
+  weight: [ "400", "500", "600", "700", "800", "900"]
 });
 
 const qwitcher = Qwitcher_Grypen({ 
-  subsets: ["latin"], 
+  subsets: ["latin"],
   variable: "--font-qwitcher", 
   weight: ["400", "700"] 
 });

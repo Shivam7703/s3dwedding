@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { ser1, ser2, ser3, ser4, ser5 } from "@/assets";
 import Buttonmain from "./button";
 import Link from "next/link";
+import { Utensils, Palette, Briefcase, PartyPopper, ArrowRight, Calendar } from "lucide-react";
 
 const servicesData = [
   {
@@ -40,6 +41,14 @@ const servicesData = [
   },
 ];
 
+const serviceIcons: Record<string, React.ReactNode> = {
+  "01": <Utensils className="w-6 h-6 text-zinc-800" />,
+  "02": <Calendar className="w-6 h-6 text-zinc-800" />,
+  "03": <Palette className="w-6 h-6 text-zinc-800" />,
+  "04": <Briefcase className="w-6 h-6 text-zinc-800" />,
+  "05": <PartyPopper className="w-6 h-6 text-zinc-800" />,
+};
+
 export default function Services() {
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -51,19 +60,30 @@ export default function Services() {
   const opacity = useTransform(scrollYProgress, [0, 0.05, 0.92, 1], [0, 1, 1, 0]);
 
   return (
-    <div ref={targetRef} className="relative h-[510vh]">
-      <div className="sticky top-0 h-screen flex flex-col bg-ser overflow-hidden py-7 md:py-12">
+    <div ref={targetRef} className="  relative h-[510vh]">
+      <div id="bg-service" className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-9 md:pt-20"
+  //      style={{
+  // background: `radial-gradient(
+  //   circle at 0% 100%,
+  //   #350707 8%,
+  //   #1c0000 35%,
+  //   #080101 55%,
+  //   #000000 80%
+  //   #000000 100%
+  // )`,
+// }}
+>
 
         {/* Brand Block */}
         <div className="text-center w-full max-w-3xl mx-auto">
               {/* <h4 className="text-red-600 text-sm md:text-lg font-bold mb-4">Our Services</h4> */}
-              <h2 className="text-white font-semibold text-3xl capitalize md:text-5xl leading-[1.05] mb-6">
-                What Services We <span className="text-red-600 cursive">Provide.</span>
+              <h2 className="text-white font-bold text-3xl capitalize md:text-6xl leading-[1.05] mb-3">
+                What Services We <span className="text-red-600">Provide.</span>
               </h2>
-             
+             <p className="text-zinc-200 max-w-md mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error a, fugiat explicabo maiores repellendus tenetur.</p>
             </div>
         {/* Cards Track */}
-        <div className="relative mt-6 md:mt-8 w-full overflow-hidden perspective-[1300px]">
+        <div className="relative mt-8 md:mt-14 w-full overflow-hidden perspective-[1300px]">
           <motion.div
             style={{ x }}
             className="flex items-center justify-end gap-12 p-6 md:pr-20 md:pl-[62vw] w-max relative z-10"
@@ -96,7 +116,6 @@ function ServiceCard({
   total: number;
   progress: MotionValue<number>;
 }) {
-  // Roughly where this card is centered along the scroll timeline
   const cardStart = index / total;
   const cardEnd = (index + 1) / total;
   const cardCenter = (cardStart + cardEnd) / 2;
@@ -111,45 +130,54 @@ function ServiceCard({
   return (
     <motion.div
       style={{ scale, opacity, y }}
-      className="w-[85vw] sm:w-95 md:w-130 shrink-0 rounded-[28px] overflow-hidden"
+      className="w-[85vw] sm:w-95 md:w-110 shrink-0 rounded-[28px] overflow-hidden"
     >
-      <div
-        className=" h-max flex flex-col  justify-center backdrop-blur-md relative group transition-colors duration-500 
-             shadow-[0_30px_70px_rgba(0,0,0,0.55)]"
-      >
+      <div className="relative group overflow-hidden rounded-[28px] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.7)]">
         
-        {/* Premium Glow Overlay */}
-        <div className="absolute inset-0  opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl pointer-events-none -z-10 " />
-
-        {/* Image */}
-        <div className="relative w-full aspect-5/3 rounded-2xl overflow-hidden mb-3">
+        {/* Card Main Container with increased height */}
+        <div className="relative w-full aspect-5/4 border border-white/30 rounded-[28px] overflow-hidden">
+          
+          {/* Background Image */}
           <Image
             src={service.image}
             alt={service.title}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
-          {/* <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" /> */}
-         
+
+          {/* Dark Gradient Overlay for Text Legibility */}
+          <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-transparent" />
+
+          {/* Top Badge: Service Number & Icon */}
+          <div className="absolute top-5 left-5 right-5 flex justify-between items-center z-10">
+          
+            <div className="p-2.5 rounded-full bg-white border shadow-xl shadow-black/80">
+              {serviceIcons[service.num] || <Utensils className="w-6 h-6 text-zinc-800" />}
+            </div>
+          </div>
+
+          {/* Content Layer Over the Image (Bottom Positioned) */}
+          <div className="absolute bottom-0 inset-x-0 p-6 md:p-8 z-10 flex flex-col justify-end text-left">
+            
+            <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2 group-hover:text-amber-300 transition-colors">
+              {service.title}
+            </h3>
+
+            <p className="text-sm md:text-base leading-relaxed font-normal text-zinc-300 line-clamp-2 mb-4">
+              {service.desc}
+            </p>
+
+            <Link
+              href="#"
+              className="inline-flex items-center gap-2 font-semibold text-xs md:text-sm uppercase tracking-wider text-amber-400 hover:text-white transition-colors"
+            >
+              <span>Know More</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
+            </Link>
+          </div>
+
         </div>
 
-        <div className="px-8 text-center">
-          <h3 className="text-xl md:text-3xl cursive font-bold tracking-tight text-white">
-            {service.title}
-          </h3>
-
-          <p className=" text-sm md:text-base leading-relaxed font-normal text-zinc-400 line-clamp-2">
-            {service.desc}
-          </p>
-
-          <Link
-            href="#"
-            className="mt-2 inline-flex items-center gap-2 font-semibold text-sm uppercase tracking-wider transition-colors text-red-400 hover:text-violet-300"
-          >
-            <span>Know More</span>
-            <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </Link>
-        </div>
       </div>
     </motion.div>
   );

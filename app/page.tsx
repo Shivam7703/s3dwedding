@@ -16,9 +16,9 @@ export default function Home() {
 
         <Services />
 
-      {/* <StickySection zIndex={10}>
+      <StickySection zIndex={10}>
         <Whychoose />
-      </StickySection> */}
+      </StickySection>
     </main>
   );
 }

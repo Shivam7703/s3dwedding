@@ -22,16 +22,21 @@ const points = [
     desc: "Over a decade of experience delivering perfect events across the country.",
     icon: FiAward,
   },
+  {
+    title: "Handpicked Vendors",
+    desc: "Every partner is vetted personally — absolutely no last-minute surprises.",
+    icon: FiStar,
+  },
 ];
 
 export default function Whychoose() {
   return (
-    <section className="relative bg-black pt-24 pb-0 md:min-h-screen flex items-center overflow-hidden">
+    <div className="relative bg-black md:min-h-screen flex items-center overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-violet-600/15 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-0 w-125 h-125 bg-red-600/15 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Main Container - Flexbox se image ko right me push kiya hai */}
-      <div className="w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-0">
+      <div className="w-full flex flex-col lg:flex-row relative  gap-12 lg:gap-0">
         
         {/* Left — Content */}
         <div className="w-full lg:w-[55%] px-6 md:px-12 lg:pl-16 xl:pl-32 py-12 lg:py-24">
@@ -41,16 +46,11 @@ export default function Whychoose() {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
-            {/* Pill Badge */}
-            <div className="inline-block px-4 py-1.5 mb-6 rounded-full border border-violet-500/30 bg-violet-500/10 backdrop-blur-md">
-              <span className="text-xs font-bold tracking-widest uppercase text-violet-400">
-                Why Choose Us
-              </span>
-            </div>
+            
 
             <h2 className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
-              We Turn Your Big Day <br className="hidden xl:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">
+              We Turn Your Big Day {" "}<br className="hidden xl:block" />
+              <span className="text-red-600">
                 Into Magic.
               </span>
             </h2>
@@ -71,11 +71,9 @@ export default function Whychoose() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
                     // Last box ko full width diya hai symmetry ke liye
-                    className={`p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-sm hover:bg-zinc-800/60 hover:border-violet-500/40 transition-all duration-300 group ${
-                      index === 2 ? 'sm:col-span-2 flex flex-col sm:flex-row items-start sm:items-center gap-4' : 'flex flex-col gap-3'
-                    }`}
+                    className={`p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-sm hover:bg-zinc-800/60 hover:border-amber-500/40 transition-all duration-300 group flex flex-col gap-3`}
                   >
-                    <div className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center border border-violet-500/30 bg-violet-500/10 text-violet-400 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 shrink-0 rounded-xl flex items-center justify-center border border-amber-500/30 bg-amber-500/10 text-amber-400 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="text-xl" />
                     </div>
                     <div>
@@ -96,12 +94,9 @@ export default function Whychoose() {
         </div>
 
         {/* Right — Image (Full Bleed to the Right Edge) */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full lg:w-[45%] h-[500px] lg:h-[800px] lg:rounded-l-[3rem] overflow-hidden shadow-2xl"
+        <div
+          
+          className="lg:sticky top-0 w-full lg:w-[45%] h-125 lg:h-[900px] lg:rounded-l-[3rem] overflow-hidden shadow-2xl"
         >
           <Image
             src={bride}
@@ -110,28 +105,12 @@ export default function Whychoose() {
             className="object-cover object-center lg:object-left hover:scale-105 transition-transform duration-700"
           />
           {/* Gradient overlay to blend with background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent lg:bg-gradient-to-l lg:from-black/10 lg:to-black/80" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent lg:bg-linear-to-l lg:from-black/10 lg:to-black/80" />
 
-          {/* Upgraded Floating Stat Card */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
-            className="absolute bottom-8 left-6 lg:bottom-16 lg:-left-12 bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl px-8 py-6 shadow-[0_30px_80px_rgba(0,0,0,0.6)]"
-          >
-            <div className="flex items-center gap-4">
-              <div className="w-3 h-12 bg-violet-500 rounded-full" />
-              <div>
-                <p className="text-4xl md:text-5xl font-black text-white tracking-tight">500+</p>
-                <p className="text-xs font-bold uppercase tracking-widest text-zinc-300 mt-1">
-                  Events Delivered
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+         
+        </div>
 
       </div>
-    </section>
+    </div>
   );
 }
