@@ -61,18 +61,13 @@ export default function Services() {
 
   return (
     <div ref={targetRef} className="  relative h-[510vh]">
-      <div id="bg-service" className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden py-9 md:pt-20"
-  //      style={{
-  // background: `radial-gradient(
-  //   circle at 0% 100%,
-  //   #350707 8%,
-  //   #1c0000 35%,
-  //   #080101 55%,
-  //   #000000 80%
-  //   #000000 100%
-  // )`,
-// }}
->
+      <div
+        className="sticky bg-serve top-0 h-screen flex flex-col justify-center overflow-hidden py-9 md:pt-20"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at -35% 130%,  #981a01 10%, #1c0000 40%, #000000 55%, #000000 100%, #000000 100%)",
+        }}
+      >
 
         {/* Brand Block */}
         <div className="text-center w-full max-w-3xl mx-auto">
@@ -124,7 +119,7 @@ function ServiceCard({
   const maxVal = Math.min(1, cardCenter + 0.16);
 
   const scale = useTransform(progress, [minVal, cardCenter, maxVal], [0.82, 1.12, 0.82]);
-  const opacity = useTransform(progress, [minVal, cardCenter, maxVal], [0.45, 1, 0.45]);
+  const opacity = useTransform(progress, [minVal, cardCenter, maxVal], [0.65, 1, 0.75]);
   const y = useTransform(progress, [minVal, cardCenter, maxVal], [24, 0, 24]);
 
   return (

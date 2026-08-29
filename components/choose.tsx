@@ -33,7 +33,7 @@ export default function Whychoose() {
   return (
     <div className="relative bg-black md:min-h-screen flex items-center overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-0 left-0 w-125 h-125 bg-red-600/15 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute top-14 -left-3 w-125 h-125 bg-red-600/25 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Main Container - Flexbox se image ko right me push kiya hai */}
       <div className="w-full flex flex-col lg:flex-row relative  gap-12 lg:gap-0">

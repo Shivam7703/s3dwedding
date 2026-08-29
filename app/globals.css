@@ -59,14 +59,16 @@ background: radial-gradient(
 );
 }
 
-#bg-service { background: radial-gradient(
+.bg-serve {
+   background-image: radial-gradient(
     circle at 0% 100%,
     #350707 8%,
     #1c0000 35%,
     #080101 55%,
     #000000 80%
     #000000 100%
-  )!important}
+  )!important;
+}
 
 
 
