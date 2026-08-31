@@ -33,7 +33,7 @@ export default function Whychoose() {
   return (
     <div className="relative bg-black md:min-h-screen flex items-center overflow-hidden">
       {/* Background Ambient Glow */}
-      <div className="absolute top-14 -left-3 w-125 h-125 bg-red-600/25 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute -left-3 w-105 h-80 bg-red-600/45 blur-[150px] rounded-full pointer-events-none" />
 
       {/* Main Container - Flexbox se image ko right me push kiya hai */}
       <div className="w-full flex flex-col lg:flex-row relative  gap-12 lg:gap-0">
@@ -48,14 +48,14 @@ export default function Whychoose() {
           >
             
 
-            <h2 className="mb-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight text-white">
+            <h2 className="mb-6 text-3xl sm:text-4xl lg:text-6xl leading-tight font-bold tracking-tight text-white">
               We Turn Your Big Day {" "}<br className="hidden xl:block" />
               <span className="text-red-600">
                 Into Magic.
               </span>
             </h2>
 
-            <p className="text-base md:text-lg leading-relaxed text-zinc-400 mb-10 max-w-xl">
+            <p className=" leading-relaxed text-zinc-200 mb-10 max-w-xl">
               From the first consultation to the final send-off, we handle every detail with precision — so you get to actually enjoy your own event.
             </p>
 

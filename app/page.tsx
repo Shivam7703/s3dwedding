@@ -5,6 +5,7 @@ import Services from "@/components/services";
 import Gallery from "@/components/gallery";
 import Whychoose from "@/components/choose";
 import StickySection from "@/components/stickey";
+import Testimonials from "@/components/test";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
 
         <Services />
 
-      <StickySection zIndex={10}>
         <Whychoose />
+      <StickySection zIndex={10}>
+        <Testimonials />
       </StickySection>
     </main>
   );

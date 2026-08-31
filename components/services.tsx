@@ -60,23 +60,22 @@ export default function Services() {
   const opacity = useTransform(scrollYProgress, [0, 0.05, 0.92, 1], [0, 1, 1, 0]);
 
   return (
-    <div ref={targetRef} className="  relative h-[510vh]">
+    <div ref={targetRef} className="  relative h-[480vh]">
       <div
-        className="sticky bg-serve top-0 h-screen flex flex-col justify-center overflow-hidden py-9 md:pt-20"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at -35% 130%,  #981a01 10%, #1c0000 40%, #000000 55%, #000000 100%, #000000 100%)",
-        }}
+        className="sticky bg-serve top-0 h-screen flex flex-col bg-black justify-center overflow-hidden py-9 md:pt-20"
+      // style={{
+      //   backgroundImage:
+      //     "radial-gradient(circle at -35% 130%,  #981a01 10%, #1c0000 40%, #000000 55%, #000000 100%, #000000 100%)",
+      // }}
       >
 
         {/* Brand Block */}
         <div className="text-center w-full max-w-3xl mx-auto">
-              {/* <h4 className="text-red-600 text-sm md:text-lg font-bold mb-4">Our Services</h4> */}
-              <h2 className="text-white font-bold text-3xl capitalize md:text-6xl leading-[1.05] mb-3">
-                What Services We <span className="text-red-600">Provide.</span>
-              </h2>
-             <p className="text-zinc-200 max-w-md mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error a, fugiat explicabo maiores repellendus tenetur.</p>
-            </div>
+         <h2 className="text-white text-3xl capitalize md:text-6xl font-bold leading-[1.05] mb-3">
+            What Services We <span className="text-red-600">Provide.</span>
+          </h2>
+          <p className="text-zinc-200 text-sm max-w-md mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error a, fugiat explicabo maiores repellendus tenetur.</p>
+        </div>
         {/* Cards Track */}
         <div className="relative mt-8 md:mt-14 w-full overflow-hidden perspective-[1300px]">
           <motion.div
@@ -128,10 +127,10 @@ function ServiceCard({
       className="w-[85vw] sm:w-95 md:w-110 shrink-0 rounded-[28px] overflow-hidden"
     >
       <div className="relative group overflow-hidden rounded-[28px] border border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.7)]">
-        
+
         {/* Card Main Container with increased height */}
         <div className="relative w-full aspect-5/4 border border-white/30 rounded-[28px] overflow-hidden">
-          
+
           {/* Background Image */}
           <Image
             src={service.image}
@@ -139,29 +138,22 @@ function ServiceCard({
             fill
             className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
           />
-
           {/* Dark Gradient Overlay for Text Legibility */}
           <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 to-transparent" />
-
           {/* Top Badge: Service Number & Icon */}
           <div className="absolute top-5 left-5 right-5 flex justify-between items-center z-10">
-          
             <div className="p-2.5 rounded-full bg-white border shadow-xl shadow-black/80">
               {serviceIcons[service.num] || <Utensils className="w-6 h-6 text-zinc-800" />}
             </div>
           </div>
-
           {/* Content Layer Over the Image (Bottom Positioned) */}
           <div className="absolute bottom-0 inset-x-0 p-6 md:p-8 z-10 flex flex-col justify-end text-left">
-            
             <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-2 group-hover:text-amber-300 transition-colors">
               {service.title}
             </h3>
-
             <p className="text-sm md:text-base leading-relaxed font-normal text-zinc-300 line-clamp-2 mb-4">
               {service.desc}
             </p>
-
             <Link
               href="#"
               className="inline-flex items-center gap-2 font-semibold text-xs md:text-sm uppercase tracking-wider text-amber-400 hover:text-white transition-colors"
@@ -170,9 +162,7 @@ function ServiceCard({
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1.5" />
             </Link>
           </div>
-
         </div>
-
       </div>
     </motion.div>
   );

@@ -5,10 +5,7 @@
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -72,7 +69,18 @@ background: radial-gradient(
 
 
 
+@theme {
+  --animate-marquee: marquee 30s linear infinite;
 
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+}
 
 .bg-abs1 {
   background: url("../assets/bg101.jpg");
