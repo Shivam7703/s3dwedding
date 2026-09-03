@@ -62,7 +62,7 @@ export default function Services() {
   return (
     <div ref={targetRef} className="  relative h-[480vh]">
       <div
-        className="sticky bg-serve top-0 h-screen flex flex-col bg-black justify-center overflow-hidden py-9 md:pt-20"
+        className="sticky bg-serve top-0 h-screen flex flex-col bg-white justify-center overflow-hidden py-9 md:pt-20"
       // style={{
       //   backgroundImage:
       //     "radial-gradient(circle at -35% 130%,  #981a01 10%, #1c0000 40%, #000000 55%, #000000 100%, #000000 100%)",
@@ -70,14 +70,14 @@ export default function Services() {
       >
 
         {/* Brand Block */}
-        <div className="text-center w-full max-w-3xl mx-auto">
-         <h2 className="text-white text-3xl capitalize md:text-6xl font-bold leading-[1.05] mb-3">
+        <div className="text-center w-full max-w-3xl mx-auto max-md:p-6">
+         <h2 className="text-zinc-900 text-5xl capitalize md:text-6xl font-bold leading-[1.05] mb-6">
             What Services We <span className="text-red-600">Provide.</span>
           </h2>
-          <p className="text-zinc-200 text-sm max-w-md mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error a, fugiat explicabo maiores repellendus tenetur.</p>
+          <p className="text-zinc-700 text-sm max-w-md mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error a, fugiat explicabo maiores repellendus tenetur.</p>
         </div>
         {/* Cards Track */}
-        <div className="relative mt-8 md:mt-14 w-full overflow-hidden perspective-[1300px]">
+        <div className="relative mt-12  w-full overflow-hidden perspective-[1300px]">
           <motion.div
             style={{ x }}
             className="flex items-center justify-end gap-12 p-6 md:pr-20 md:pl-[62vw] w-max relative z-10"

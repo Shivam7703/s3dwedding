@@ -181,12 +181,12 @@ export default function ScrollCanvas() {
         {/* Content 1 */}
         <motion.div
           style={{ opacity: c1Opacity, filter: c1Blur, y: c1Y, pointerEvents: c1Pointer }}
-          className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
+          className="absolute md:left-5 left-2 md:top-1/2 top-[70%] rounded-xl max-sm:bg-black/60 max-sm:backdrop-blur-md max-sm:m-3 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+          <h1 className="lg:text-[80px] md:text-5xl text-4xl font-bold leading-none text-white sm:mb-6">
             Exquisite Planning Forever <span className="text-red-600">Begins</span>
           </h1>
-          <p className="text-zinc-400 mb-8 leading-[1.7] max-w-xl font-medium line-clamp-3">
+          <p className="text-zinc-300 sm:mb-8 my-4 leading-[1.7] max-w-xl font-medium line-clamp-3">
             Crafting bespoke wedding experiences with elegance, precision, and timeless design. Your love story, our canvas. Crafting bespoke wedding experiences with elegance, precision, and timeless design.
           </p>
           <div className="flex gap-4">
@@ -200,12 +200,12 @@ export default function ScrollCanvas() {
         {/* Content 2 */}
         <motion.div
           style={{ opacity: c2Opacity, filter: c2Blur, y: c2Y, pointerEvents: c2Pointer }}
-          className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
+          className="absolute md:left-5 left-2 md:top-1/2 top-[70%] rounded-xl max-sm:bg-black/60 max-sm:backdrop-blur-md max-sm:m-3 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+          <h1 className="lg:text-[80px] md:text-5xl text-4xl font-bold leading-none text-white sm:mb-6">
             Every Detail, With Proper <span className="text-red-600">Perfection</span>
           </h1>
-          <p className="text-zinc-400 mb-8 leading-[1.7] max-w-xl font-medium line-clamp-3">
+          <p className="text-zinc-300 sm:mb-8 my-4 leading-[1.7] max-w-xl font-medium line-clamp-3">
             From venue selection to the final toast, we handle every moment with care and creativity. Lorem ipsum dolor sit amet consectetur adipisicing elit.  Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           <div className="flex gap-4">
@@ -219,12 +219,12 @@ export default function ScrollCanvas() {
         {/* Content 3 */}
         <motion.div
           style={{ opacity: c3Opacity, filter: c3Blur, y: c3Y, pointerEvents: c3Pointer }}
-          className="absolute left-5 top-1/2 -translate-y-1/2 z-10 max-w-2xl p-6"
+          className="absolute md:left-5 left-2 md:top-1/2 top-[70%] rounded-xl max-sm:bg-black/60 max-sm:backdrop-blur-md max-sm:m-3 -translate-y-1/2 z-10 max-w-2xl p-6"
         >
-          <h1 className="lg:text-[80px] md:text-5xl sm:text-4xl text-3xl font-bold leading-none text-white mb-6">
+          <h1 className="lg:text-[80px] md:text-5xl text-4xl font-bold leading-none text-white sm:mb-6">
             We Create Your <span className="text-red-600">Happy Journey</span>
           </h1>
-          <p className="text-zinc-400 mb-8 leading-[1.7] max-w-xl font-medium line-clamp-3">
+          <p className="text-zinc-300 sm:mb-8 my-4 leading-[1.7] max-w-xl font-medium line-clamp-3">
             Let's create memories that last a lifetime. Reach out and start planning today. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur quis.  Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
           <div className="flex gap-4">

@@ -47,7 +47,7 @@ export default function Header() {
             <FaHeart className="text-red-500 text-4xl -rotate-45 transition-all duration-300" />
           </div>
           <div className="flex flex-col leading-none">
-            <span className={`font-serif text-2xl font-bold text-white`}>
+            <span className={`font-serif text-2xl font-bold text-white drop-shadow-md drop-shadow-black`}>
               S3D
             </span>
             <span className="text-base border-t border-red-500 font-bold text-red-500 tracking-[0.3em]">
@@ -57,12 +57,12 @@ export default function Header() {
         </div>
 
         {/* Navigation Menu */}
-        <nav className="hidden md:flex items-center rounded-4xl backdrop-blur-2xl bg-black/5 border border-white/20">
+        <nav className="hidden md:flex items-center rounded-4xl backdrop-blur-2xl bg-black/5 border border-zinc-500/70">
           {NAV_LINKS.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className={`relative text-xs uppercase px-4 py-3  font-medium tracking-widest hover:bg-white/25 rounded-4xl transition-colors group text-white`}
+              className={`relative text-xs uppercase px-4 py-3  font-medium tracking-widest hover:bg-white/25 rounded-4xl transition-colors group drop-shadow-xs drop-shadow-black text-white`}
             >
               {link}
             </a>

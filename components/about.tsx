@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { couple, bg10} from "@/assets";
+import { couple, bg10 } from "@/assets";
 import * as THREE from "three";
 import Buttonmain from "./button";
 
@@ -62,10 +62,12 @@ function useBoxMetrics(
     const t1 = setTimeout(measure, 100);
     const t2 = setTimeout(measure, 500);
     window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       window.removeEventListener("resize", measure);
+      window.removeEventListener("orientationchange", measure);
     };
   }, [stickyRef, boxRef]);
   return metrics;
@@ -225,7 +227,6 @@ function ParticleCanvas({ progress, src, topOffset, boxWidth, boxHeight }: any) 
   );
 }
 
-// ---------- PHASE 3: All particles rise together from the bottom ----------
 // ---------- PHASE 3: All particles rise together (SHAPE FIXED) ----------
 function FullScreenParticleCanvas({ progress }: any) {
   const mountRef = useRef<HTMLDivElement>(null);
@@ -250,7 +251,10 @@ function FullScreenParticleCanvas({ progress }: any) {
       const planeH = 2 * Math.tan(vFov / 2) * 26;
       const planeW = planeH * aspect;
 
-      const particleCount = 2800; 
+      // Adjust particle density slightly on mobile viewports
+      const isMobile = window.innerWidth < 768;
+      const particleCount = isMobile ? 1200 : 2000; 
+
       const scatter = new Float32Array(particleCount * 3);
       const band = new Float32Array(particleCount * 3);
       const target = new Float32Array(particleCount * 3);
@@ -305,9 +309,9 @@ function FullScreenParticleCanvas({ progress }: any) {
 
         const roll = Math.random();
         let targetY: number;
-        if (roll < 0.75) {
+        if (roll < 0.40) {
           targetY = bandY;
-        } else if (roll < 0.93) {
+        } else if (roll < 0.80) {
           targetY = bandTopY + Math.random() * (midCeilingY - bandTopY);
         } else {
           targetY = midCeilingY + Math.random() * (maxRiseY - midCeilingY - 3);
@@ -497,12 +501,10 @@ export default function Aboutsection() {
   // Show Phase 1 canvas only during Phase 1 (0 to 150vh)
   const showPhase1Canvas = rawProgress > 0.02 && rawProgress <= phase1End;
 
-  // Phase 4 white overlay - ABSOLUTE POSITION (fixed scroll position)
-  // Start at 196vh, end at 202vh (6vh duration - FAST)
-  const phase4Start = 190; // vh value (direct)
-  const phase4End = 210;   // vh value (direct)
+  // Phase 4 white overlay
+  const phase4Start = 190;
+  const phase4End = 210;
   
-  // Convert to 0-1 progress
   const phase4StartProgress = phase4Start / 220;
   const phase4EndProgress = phase4End / 220;
   
@@ -512,55 +514,58 @@ export default function Aboutsection() {
 
   return (
     <div className="w-full text-zinc-100 bg-about relative">
-      {/* Outer container for scroll handling - Total height: 220vh */}
+      {/* Outer container for scroll handling */}
       <div ref={outerRef} style={{ height: "240vh" }} className="relative z-10">
         
-        {/* Phase 3 Canvas - ALWAYS OPACITY 1 */}
+        {/* Phase 3 Canvas */}
         <div 
-          className="absolute -bottom-8 left-0 w-full pointer-events-none"
-          style={{ height: "80vh", zIndex: 5, opacity: 1 }}
+          className="absolute -bottom-8 left-0 w-full pointer-events-none h-[60vh] md:h-[80vh]"
+          style={{ zIndex: 5, opacity: 1 }}
         >
           <FullScreenParticleCanvas progress={rawProgress} />
         </div>
 
         {/* Content & Phase 1 */}
-        <div ref={stickyRef} className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
-          <div className="mx-auto w-full px-6 max-w-362.5 md:px-10 lg:px-24 flex flex-wrap justify-between gap-y-6 items-center">
-            <div className="md:w-[50%] w-full">
-              <h4 className="font1 font-black mb-3 text-2xl sm:text-4xl">About Us</h4>
-  <h2 className="font-bold text-3xl capitalize md:text-[65px] leading-[1.05] mb-5">
-    Every love story, shaped <span className="text-red-600">with intention.</span>
-  </h2>
-  
-  <p className="text-zinc-300 mb-5 leading-relaxed">
-    We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the true essence of your love.  We believe every couple has a unique story waiting to be told. true essence of your love.
-  </p>
-    <p className="text-zinc-300 mb-8 leading-relaxed">
-    We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the true essence of your love. 
-  </p>
+        <div ref={stickyRef} className="sticky top-0 h-screen w-full flex items-center overflow-hidden py-6 md:py-0">
+          <div className="mx-auto w-full px-4 sm:px-6 md:px-10 lg:px-24 flex flex-col md:flex-row justify-between gap-y-6 items-center">
+            
+            {/* Left Content */}
+            <div className="md:w-[50%] w-full order-2 md:order-1">
+              <h4 className="font1 font-black mb-2 sm:mb-3 text-xl sm:text-4xl">About Us</h4>
+              <h2 className="font-bold text-2xl sm:text-3xl md:text-[65px] leading-[1.1] md:leading-[1.05] mb-3 sm:mb-5 capitalize">
+                Every love story, shaped <span className="text-red-600">with intention.</span>
+              </h2>
+              
+              <p className="text-zinc-300 mb-3 sm:mb-5 leading-relaxed text-sm sm:text-base">
+                We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the true essence of your love.
+              </p>
+              <p className="text-zinc-300 mb-4 sm:mb-8 leading-relaxed text-sm sm:text-base">
+                We believe every couple has a unique story waiting to be told. Our approach combines artistic vision with technical precision to create films that capture the true essence of your love. 
+              </p>
 
-  {/* Feature Boxes */}
-  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-    <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
-      <h3 className="font-semibold text-lg text-amber-400 mb-2 border-b">Artistic Vision</h3>
-      <p className="text-xs text-zinc-300">Cinematic storytelling tailored to your vibe.</p>
-    </div>
+              {/* Feature Boxes */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6 max-md:hidden">
+                <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
+                  <h3 className="font-semibold text-sm sm:text-lg text-amber-400 mb-1 sm:mb-2 border-b">Artistic Vision</h3>
+                  <p className="text-xs text-zinc-300">Cinematic storytelling tailored to your vibe.</p>
+                </div>
 
-   <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
-      <h3 className="font-semibold text-lg text-amber-400 mb-2 border-b">Artistic Vision</h3>
-      <p className="text-xs mb-2  text-zinc-300">Cinematic storytelling tailored to your vibe.</p>
-    </div>
-    <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
-      <h3 className="font-semibold text-lg text-amber-400 mb-2 border-b">Artistic Vision</h3>
-      <p className="text-xs text-zinc-300 mb-2">Cinematic storytelling tailored to your vibe.</p>
-    </div>
-  </div>
-    
-</div>
+                <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
+                  <h3 className="font-semibold text-sm sm:text-lg text-amber-400 mb-1 sm:mb-2 border-b">Artistic Vision</h3>
+                  <p className="text-xs text-zinc-300 mb-1 sm:mb-2">Cinematic storytelling tailored to your vibe.</p>
+                </div>
+                
+                <div className="p-2 px-4 rounded-xl bg-zinc-100/5 backdrop-blur-md border border-zinc-400">
+                  <h3 className="font-semibold text-sm sm:text-lg text-amber-400 mb-1 sm:mb-2 border-b">Artistic Vision</h3>
+                  <p className="text-xs text-zinc-300 mb-1 sm:mb-2">Cinematic storytelling tailored to your vibe.</p>
+                </div>
+              </div>
+            </div>
 
-            <div className="relative h-100 md:w-[45%] w-full md:h-137.5">
+            {/* Right Image Container */}
+            <div className="relative h-86 md:h-137.5 w-full md:w-[45%] order-1 md:order-2">
               <Image src={bg10} alt="About" className="w-full absolute top-0 right-0 h-full object-cover rounded-xl" />
-              <div ref={boxRef} className="w-[70%] h-[83%] left-[15%] absolute -bottom-3 rounded-xl overflow-hidden">
+              <div ref={boxRef} className="w-[70%] h-[87%] left-[15%] absolute -bottom-3 rounded-xl overflow-hidden">
                 <img
                   src={typeof couple === "string" ? couple : couple.src}
                   alt="About"
@@ -569,9 +574,10 @@ export default function Aboutsection() {
                 />
               </div>
             </div>
+
           </div>
 
-          {/* Phase 1 Canvas - Only visible during Phase 1 (0-150vh) */}
+          {/* Phase 1 Canvas - Only visible during Phase 1 */}
           {ready && showPhase1Canvas && (
             <div
               className="absolute pointer-events-none"
@@ -589,15 +595,14 @@ export default function Aboutsection() {
         </div>
       </div>
 
-      {/* Phase 4: White Overlay - ABSOLUTE POSITION, OPACITY 0 to 1 */}
-     <div 
-  className="absolute w-full h-full top-0 left-0 z-70 bg-abs1 bg-bottom! bg-cover bg-no-repeat "
-  style={{ 
-    opacity: whiteOverlayOpacity,
-    transition: 'opacity 0.4s linear' 
-  }}
->
-</div>
+      {/* Phase 4: White Overlay */}
+      <div 
+        className="absolute w-full h-full top-0 left-0 z-70 bg-abs1 bg-bottom! bg-cover bg-no-repeat pointer-events-none"
+        style={{ 
+          opacity: whiteOverlayOpacity,
+          transition: 'opacity 0.2s linear' 
+        }}
+      />
     </div>
   );
 }

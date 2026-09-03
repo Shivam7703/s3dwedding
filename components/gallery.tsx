@@ -68,8 +68,8 @@ function PillarParticleCanvas({ isMobile }: PillarProps) {
     camera.position.set(0, 0, isMobile ? 39: 35); 
     camera.lookAt(0, 0, 0); // Explicitly center target
 
-    const particleCount = isMobile ? 3200 : 3000; 
-    const maxRadius = isMobile ? 3.2 : 6.0; 
+    const particleCount = isMobile ? 3200 : 2500; 
+    const maxRadius = isMobile ? 3.2 : 5.5; 
     const pillarHeight = 50; 
 
     const positions = new Float32Array(particleCount * 3);
@@ -292,7 +292,7 @@ export default function Gallery() {
 
   const currentDetail = imageDetails[activeIndex] || { title: "Our Showcase", desc: "Explore our dynamic gallery layers." };
   const whiteOverlayOpacity = Math.max(0, 1 - (progress * 12));
-  const textOpacity = Math.max(0, 1 - (zoomProgress * 2.5));
+  const textOpacity = Math.max(0, 1 - (zoomProgress * 9));
 
   if (!isMounted) {
     return <div ref={containerRef} className="relative h-[500vh] w-full" />;
@@ -309,33 +309,33 @@ export default function Gallery() {
           
           {/* Gallery Layer */}
           <div 
-            className="absolute inset-0 flex items-center justify-center bg-gal transition-opacity"
+            className="absolute inset-0 flex items-center justify-center bg-zinc-50 transition-opacity"
             style={{ opacity: galleryOpacity }}
           >
 
             {/* Header Text */}
             <div 
-              className="absolute right-6 top-20 max-md:p-3 max-md:bg-black/40 z-30 max-w-65 max-md:backdrop-blur-md md:max-w-sm text-right pointer-events-none"
+              className="absolute sm:right-6 max-sm:left-6 top-20 max-md:p-4 max-md:bg-white/30 z-30 max-w-65 rounded-lg max-md:backdrop-blur-md md:max-w-sm text-right pointer-events-none"
               style={{ opacity: textOpacity }}
             >
-              <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wider text-white mb-2 drop-shadow-sm">
+              <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-wider text-zinc-300 mb-2 drop-shadow-md drop-shadow-black">
                 Our Gallery
               </h2>
-              <p className="text-sm md:text-base text-zinc-200 font-medium leading-relaxed">
+              <p className="text-sm md:text-base text-zinc-800 font-medium leading-relaxed">
                 A seamless merger of dynamic digital physics and architectural layouts, rotating gracefully through infinite space.
               </p>
             </div>
 
             {/* Active Image Text */}
             <div 
-              className="absolute left-6 bottom-6 rounded-lg border border-white/10  bg-black/20 p-5 max-lg:backdrop-blur-lg z-30 max-w-70 md:max-w-sm text-left pointer-events-none transition-all duration-300"
+              className="absolute right-6  sm:left-6 bottom-8 rounded-lg border border-white bg-white/20 p-5 max-lg:backdrop-blur-lg z-30 max-w-70 md:max-w-sm text-left pointer-events-none transition-all duration-300"
               style={{ opacity: textOpacity }}
             >
-              <h3 className="text-2xl md:text-3xl font-extrabold text-amber-500  mb-2 tracking-wide">
+              <h3 className="text-2xl md:text-3xl font-extrabold text-red-600  mb-2 tracking-wide">
                 {currentDetail.title}
               </h3>
-              <p className="text-sm md:text-base text-zinc-300 leading-relaxed font-normal">
-                {currentDetail.desc} {currentDetail.desc} {currentDetail.desc}
+              <p className="text-sm md:text-base text-zinc-900 sm:leading-relaxed font-medium">
+                {currentDetail.desc} {currentDetail.desc} 
               </p>
             </div>
 

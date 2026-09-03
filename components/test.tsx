@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
 const testimonials = [
   {
@@ -34,15 +35,15 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-neutral-950 text-white py-20 px-4 md:px-8 space-y-24 overflow-hidden">
+    <section className="bg-white text-zinc-900 lg:p-20 md:p-16 sm:p-12 p-6 space-y-24 overflow-hidden">
       
       {/* ----------------- 1. MARQUEE TESTIMONIALS ----------------- */}
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <span className="text-amber-500 text-sm font-semibold tracking-widest uppercase">
+          <span className="text-red-600 text-sm font-semibold tracking-widest uppercase">
             Love Stories & Reviews
           </span>
-          <h2 className="text-3xl md:text-5xl mt-2">
+          <h2 className="text-3xl md:text-5xl mt-2 font-semibold">
             What Our Couples Say
           </h2>
         </div>
@@ -54,9 +55,9 @@ export default function Testimonials() {
             {[...testimonials, ...testimonials].map((item, index) => (
               <div
                 key={index}
-                className="w-[320px] md:w-[400px] shrink-0 bg-neutral-900 border border-neutral-800 p-6 rounded-2xl whitespace-normal flex flex-col justify-between hover:border-red-500/50 transition-colors duration-300"
+                className="w-[320px] md:w-[400px] shrink-0 bg-zinc-100 border border-zinc-800 p-6 rounded-2xl whitespace-normal flex flex-col justify-between hover:border-red-500/50 transition-colors duration-300"
               >
-                <p className="text-neutral-300 text-sm md:text-base italic mb-6">
+                <p className="text-zinc-700 text-sm md:text-base italic mb-6">
                   "{item.text}"
                 </p>
                 <div className="flex items-center space-x-4">
@@ -66,10 +67,10 @@ export default function Testimonials() {
                     className="w-12 h-12 rounded-full object-cover border border-red-500"
                   />
                   <div>
-                    <h4 className="font-semibold text-white text-base">
+                    <h4 className="font-semibold text-black text-base">
                       {item.name}
                     </h4>
-                    <p className="text-xs text-neutral-400">{item.event}</p>
+                    <p className="text-xs text-zinc-400">{item.event}</p>
                   </div>
                 </div>
               </div>
@@ -79,7 +80,7 @@ export default function Testimonials() {
       </div>
 
       {/* ----------------- 2. CONTACT FORM ----------------- */}
-      <div className="max-w-5xl mx-auto bg-neutral-900/80 border border-neutral-800 rounded-3xl p-8 md:p-12 shadow-2xl">
+      <div className="max-w-5xl mx-auto bg-zinc-100/80 border-2 border-white rounded-3xl p-8 md:p-12 shadow-2xl">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           
           {/* Left Side: Info */}
@@ -88,82 +89,85 @@ export default function Testimonials() {
               <span className="text-red-500 text-sm font-semibold tracking-widest uppercase">
                 Get In Touch
               </span>
-              <h2 className="text-3xl md:text-4xl font-serif mt-2 mb-4 leading-tight">
+              <h2 className="text-3xl md:text-4xl font-semibold  mt-2 mb-4 leading-tight">
                 Let’s Craft Your Dream Wedding Together.
               </h2>
-              <p className="text-neutral-400 text-sm md:text-base">
+              <p className="text-zinc-600 text-sm md:text-base">
                 Have questions or ready to start planning? Fill out the form and our team will get back to you within 24 hours.
               </p>
             </div>
 
-            <div className="mt-8 space-y-4 text-sm text-neutral-300">
-              <div className="flex items-center space-x-3">
-                <span className="text-amber-500 font-bold">📍</span>
-                <span>Varanasi / Delhi / Pan India</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-amber-500 font-bold">📞</span>
-                <span>+91 82188 85483</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <span className="text-amber-500 font-bold">✉️</span>
-                <span>contact@s3dweddings.com</span>
-              </div>
-            </div>
+         <div className="mt-8 space-y-4 text-sm text-zinc-600">
+  <div className="flex items-center space-x-3">
+    <FaMapMarkerAlt className="text-amber-500 text-lg shrink-0" />
+    <span>Gurgaon / Delhi / Pan India</span>
+  </div>
+
+  <div className="flex items-center space-x-3">
+    <FaPhoneAlt className="text-amber-500 text-lg shrink-0" />
+    <span>+91 82188 85483</span>
+  </div>
+
+  <div className="flex items-center space-x-3">
+    <FaEnvelope className="text-amber-500 text-lg shrink-0" />
+    <span>contact@s3dweddings.com</span>
+  </div>
+</div>
           </div>
 
           {/* Right Side: Form */}
           <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
             <div>
-              <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2">
+              <label className="block text-xs uppercase tracking-wider text-zinc-400 mb-2">
                 Your Name
               </label>
               <input
                 type="text"
                 placeholder="Rahul Sharma"
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-red-500 transition-colors"
+                className="w-full bg-white shadow-sm rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-red-500 transition-colors"
                 required
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2">
+                <label className="block text-xs uppercase tracking-wider text-zinc-400 mb-2">
                   Email Address
                 </label>
                 <input
                   type="email"
                   placeholder="rahul@example.com"
-                  className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-red-500 transition-colors"
+                  className="w-full bg-white shadow-sm rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-red-500 transition-colors"
                   required
                 />
               </div>
               <div>
-                <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2">
+                <label className="block text-xs uppercase tracking-wider text-zinc-400 mb-2">
                   Event Date
                 </label>
                 <input
                   type="date"
-                  className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-neutral-300 focus:outline-none focus:border-red-500 transition-colors"
+                  className="w-full bg-white shadow-sm rounded-xl px-4 py-3 text-zinc-300 focus:outline-none focus:border-red-500 transition-colors"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-xs uppercase tracking-wider text-neutral-400 mb-2">
+              <label className="block text-xs uppercase tracking-wider text-zinc-400 mb-2">
                 Message / Details
               </label>
               <textarea
                 rows={4}
                 placeholder="Tell us about your event plans, guest count, or vision..."
-                className="w-full bg-neutral-950 border border-neutral-800 rounded-xl px-4 py-3 text-white placeholder-neutral-600 focus:outline-none focus:border-red-500 transition-colors resize-none"
+                className="w-full bg-white shadow-sm rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:border-red-500 transition-colors resize-none"
                 required
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-red-500 hover:bg-red-600 text-black font-semibold py-3.5 rounded-xl transition-all duration-300 shadow-lg shadow-amber-500/20"
+              className="w-full shadow-sm 
+        to-rose-700 from-red-600 bg-linear-to-r text-zinc-100 hover:to-red-800 shadow-zinc-700/30 font-semibold py-3.5 rounded-xl transition-all duration-300 "
             >
               Send Message
             </button>
